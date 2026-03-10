@@ -8,10 +8,13 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 # 新增：引入路由器和我们刚写的地址视图
 from rest_framework.routers import DefaultRouter
 from users.views import AddressViewSet
+from trade.views import ShoppingCartViewSet # 新增：引入购物车视图
 
 # 新增：让路由器自动帮我们生成增删改查的所有网址
 router = DefaultRouter()
 router.register(r'api/addresses', AddressViewSet, basename='address')
+# 新增：让路由器帮我们生成购物车的网址
+router.register(r'api/cart', ShoppingCartViewSet, basename='cart')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

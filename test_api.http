@@ -9,4 +9,14 @@ Content-Type: application/json
 
 ### 2. 拿着 Token 去获取收货地址 (记得把下面的 YOUR_ACCESS_TOKEN 替换掉)
 GET http://127.0.0.1:8000/api/addresses/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMxMDE1LCJpYXQiOjE3NzMxMzA3MTUsImp0aSI6IjFiNWMwYTk1YTllMjQ4YjZhYTA5YWJiZjJiNWU2MGQzIiwidXNlcl9pZCI6IjEifQ.vLx2-gVrvB7JdREfmIrC0_s3wURoDZaZPQoXAVFVMlg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMxNzY3LCJpYXQiOjE3NzMxMzE0NjcsImp0aSI6Ijk0MjRmNmNmMDRjYjQxMGRhYjAyZmEwYjAwOWFkMWRjIiwidXNlcl9pZCI6IjEifQ.jUDO9mDJGq3nVG05KVjKzYTlXQcJ9P6T9ubUlhq_hzI
+
+### 3. 加入购物车测试
+POST http://127.0.0.1:8000/api/cart/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMxNzY3LCJpYXQiOjE3NzMxMzE0NjcsImp0aSI6Ijk0MjRmNmNmMDRjYjQxMGRhYjAyZmEwYjAwOWFkMWRjIiwidXNlcl9pZCI6IjEifQ.jUDO9mDJGq3nVG05KVjKzYTlXQcJ9P6T9ubUlhq_hzI
+Content-Type: application/json
+
+{
+  "product": 1,
+  "nums": 1
+}
