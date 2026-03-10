@@ -9,14 +9,26 @@ Content-Type: application/json
 
 ### 2. 拿着 Token 去获取收货地址 (记得把下面的 YOUR_ACCESS_TOKEN 替换掉)
 GET http://127.0.0.1:8000/api/addresses/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMxNzY3LCJpYXQiOjE3NzMxMzE0NjcsImp0aSI6Ijk0MjRmNmNmMDRjYjQxMGRhYjAyZmEwYjAwOWFkMWRjIiwidXNlcl9pZCI6IjEifQ.jUDO9mDJGq3nVG05KVjKzYTlXQcJ9P6T9ubUlhq_hzI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMyNjAzLCJpYXQiOjE3NzMxMzIzMDMsImp0aSI6IjRkYzNkYWEzOTRmMjQzZmFhYzIxY2NhNDI5MjFjNjhmIiwidXNlcl9pZCI6IjEifQ.sqhqUHWa73uwznLroH_0VzoWTgRI5DwOQgwEDIJMgtg
 
 ### 3. 加入购物车测试
 POST http://127.0.0.1:8000/api/cart/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMxNzY3LCJpYXQiOjE3NzMxMzE0NjcsImp0aSI6Ijk0MjRmNmNmMDRjYjQxMGRhYjAyZmEwYjAwOWFkMWRjIiwidXNlcl9pZCI6IjEifQ.jUDO9mDJGq3nVG05KVjKzYTlXQcJ9P6T9ubUlhq_hzI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMyNjAzLCJpYXQiOjE3NzMxMzIzMDMsImp0aSI6IjRkYzNkYWEzOTRmMjQzZmFhYzIxY2NhNDI5MjFjNjhmIiwidXNlcl9pZCI6IjEifQ.sqhqUHWa73uwznLroH_0VzoWTgRI5DwOQgwEDIJMgtg
 Content-Type: application/json
 
 {
   "product": 1,
   "nums": 1
+}
+
+
+### 4. 一键结算！(记得在Bearer后面换上你最新获取的Token！)
+POST http://127.0.0.1:8000/api/orders/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzczMTMyNjAzLCJpYXQiOjE3NzMxMzIzMDMsImp0aSI6IjRkYzNkYWEzOTRmMjQzZmFhYzIxY2NhNDI5MjFjNjhmIiwidXNlcl9pZCI6IjEifQ.sqhqUHWa73uwznLroH_0VzoWTgRI5DwOQgwEDIJMgtg
+Content-Type: application/json
+
+{
+  "address": "山东省青岛市崂山区松岭路238号中国海洋大学",
+  "signer_name": "李雨润",
+  "signer_mobile": "13663591937"
 }
