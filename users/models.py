@@ -21,3 +21,18 @@ class Address(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.receiver}"
+# 🌟 补丁 2：新增“在线客服/留言”表
+class UserMessage(models.Model):
+    """用户留言表（对应任务书的简易客服功能）"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="留言用户")
+    message_type = models.IntegerField(default=1, choices=((1, "留言"), (2, "投诉"), (3, "询问"), (4, "售后")), verbose_name="留言类型")
+    subject = models.CharField(max_length=100, default="", verbose_name="主题")
+    message = models.TextField(default="", verbose_name="留言内容")
+    add_time = models.DateTimeField(auto_now_add=True, verbose_name="留言时间")
+
+    class Meta:
+        verbose_name = "用户留言"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.subject

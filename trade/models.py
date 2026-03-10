@@ -22,8 +22,15 @@ class OrderInfo(models.Model):
     """订单主表：相当于小票的抬头和结尾"""
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="下单用户")
     order_sn = models.CharField(max_length=30, null=True, blank=True, unique=True, verbose_name="订单编号")
+    # 🌟 补丁 3：完美对标任务书的订单状态机
     pay_status = models.CharField(
-        choices=(("TRADE_SUCCESS", "成功"), ("TRADE_CLOSED", "超时关闭"), ("paying", "待支付")),
+        choices=(
+            ("paying", "待支付"),
+            ("shipping", "待发货"),
+            ("receiving", "待收货"),
+            ("success", "已完成"),
+            ("closed", "已取消")
+        ),
         default="paying", max_length=30, verbose_name="订单状态"
     )
     order_mount = models.FloatField(default=0.0, verbose_name="订单总金额")

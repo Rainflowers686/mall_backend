@@ -11,6 +11,11 @@ from rest_framework.routers import DefaultRouter
 from users.views import AddressViewSet
 from trade.views import ShoppingCartViewSet # 新增：引入购物车视图
 
+from users.views import AddressViewSet, UserMessageViewSet # 引入留言视图
+
+# 在你之前的 router 列表里加上这一行：
+router.register(r'api/messages', UserMessageViewSet, basename='messages')
+
 # 新增：让路由器自动帮我们生成增删改查的所有网址
 router = DefaultRouter()
 router.register(r'api/addresses', AddressViewSet, basename='address')
