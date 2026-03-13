@@ -1,4 +1,6 @@
-from rest_framework import viewsets
+from rest_framework import mixins, viewsets
+from django.contrib.auth.models import User
+from .serializers import UserRegSerializer
 from rest_framework.permissions import IsAuthenticated
 from .models import Address, UserMessage
 from .serializers import AddressSerializer, UserMessageSerializer
@@ -29,3 +31,7 @@ class UserMessageViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         # 自动绑定当前用户
         serializer.save(user=self.request.user)
+class UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """用户注册 API"""
+    queryset = User.objects.all()
+    serializer_class = UserRegSerializer

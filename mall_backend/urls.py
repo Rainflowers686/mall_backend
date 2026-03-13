@@ -12,7 +12,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 # 引入咱们自己写的各个模块视图
 from goods.views import ProductListAPIView
-from users.views import AddressViewSet, UserMessageViewSet
+from users.views import AddressViewSet, UserMessageViewSet, UserViewSet
 from trade.views import ShoppingCartViewSet, OrderViewSet
 
 # 🌟 必须先让 router 诞生！
@@ -23,6 +23,7 @@ router.register(r'api/addresses', AddressViewSet, basename='address')
 router.register(r'api/messages', UserMessageViewSet, basename='messages')
 router.register(r'api/cart', ShoppingCartViewSet, basename='cart')
 router.register(r'api/orders', OrderViewSet, basename='order')
+router.register(r'api/register', UserViewSet, basename='register')
 
 urlpatterns = [
                   # 基础与后台
@@ -40,3 +41,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-58_ygi51%sac-y&ccca3b)g%_bgy*z_!+wm8(55$s(e43a*)#=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users',  # 新增：告诉 Django 我们的用户中心诞生了
     'trade',  # 新增：告诉 Django 我们的交易模块诞生了
     'drf_spectacular',  # 新增：注册文档生成引擎
+    'drf_spectacular_sidecar',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +154,23 @@ REST_FRAMEWORK = {
 
 # 允许所有域名/端口跨域访问（开发阶段极其方便，等以后项目真正在服务器上线了我们再限制）
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+from datetime import timedelta
+
+# 延长 JWT 门禁卡的保质期，方便前端联调
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Mall API',
+    'DESCRIPTION': '商城后端接口文档',
+    'VERSION': '1.0.0',
+    # 下面这三行是摆脱校园网和国外 CDN 限制的绝对王牌：
+    'SWAGGER_UI_DIST': 'SIDECAR',
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+}
