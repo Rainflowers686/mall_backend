@@ -1,6 +1,7 @@
 # Geek Mall Backend
 
 *大学课程商城项目的 Django REST API。*
+
 ![Python](https://img.shields.io/badge/Python-API-3776AB?logo=python&logoColor=white) ![Django REST Framework](https://img.shields.io/badge/Django-REST%20Framework-092E20?logo=django&logoColor=white) ![Status](https://img.shields.io/badge/Status-Course%20Project-586069)
 
 **导航：**[状态](#项目状态) · [本地运行](#本地运行) · [仓库内容](#仓库内容)
