@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
     'users',  # 新增：告诉 Django 我们的用户中心诞生了
     'trade',  # 新增：告诉 Django 我们的交易模块诞生了
+    'drf_spectacular',  # 新增：注册文档生成引擎
 ]
 
 MIDDLEWARE = [
@@ -140,10 +141,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Django REST Framework 全局配置
 REST_FRAMEWORK = {
-    # 配置默认的身份验证方式为 JWT
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    # 🌟 新增：指定默认的结构生成类
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 
