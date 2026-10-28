@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ShoppingCart
+from .models import ShoppingCart, OrderInfo
 
 class ShoppingCartSerializer(serializers.ModelSerializer):
     # 这三行是魔法：利用外键关系，直接把商品表里的名字、价格和图片拉取过来，设为只读
@@ -11,3 +11,8 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
         model = ShoppingCart
         # 暴露给前端的字段，注意这里没有 user，因为 user 是后端自动绑定的
         fields = ['id', 'product', 'nums', 'is_selected', 'product_name', 'product_price', 'product_image']
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderInfo
+        # 前端只需要传这三个字段，别的我们后端统统自己生成
+        fields = ['address', 'signer_name', 'signer_mobile']
