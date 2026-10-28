@@ -21,6 +21,7 @@ class Product(models.Model):
     # 注意：因为这里用到了图片字段 ImageField，稍后我们需要装一个处理图片的库
     image = models.ImageField(upload_to='products/', null=True, blank=True, verbose_name="商品图")
     is_hot = models.BooleanField(default=False, verbose_name="是否热门推荐")
+    is_sale = models.BooleanField(default=True, verbose_name="是否上架")
 
     class Meta:
         verbose_name = "商品"

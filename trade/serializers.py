@@ -1,16 +1,24 @@
 from rest_framework import serializers
 from .models import ShoppingCart, OrderInfo
 
+# 引入你的商品序列化器
+from goods.serializers import ProductSerializer
+
+
 class ShoppingCartSerializer(serializers.ModelSerializer):
-    # 这三行是魔法：利用外键关系，直接把商品表里的名字、价格和图片拉取过来，设为只读
-    product_name = serializers.CharField(source='product.name', read_only=True)
-    product_price = serializers.DecimalField(source='product.price', max_digits=10, decimal_places=2, read_only=True)
-    product_image = serializers.ImageField(source='product.image', read_only=True)
+    # 🌟 核心魔法：在读取购物车时，自动把关联的 product 展开成完整的字典
+    # 这样前端就能直接通过 item.product.name 和 item.product.image 拿到数据
+    product = ProductSerializer(read_only=True)
+
+    # 🌟 这一行是为了保证你“加入购物车”的 POST 请求依然能用商品 ID 提交
+    product_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = ShoppingCart
-        # 暴露给前端的字段，注意这里没有 user，因为 user 是后端自动绑定的
-        fields = ['id', 'product', 'nums', 'is_selected', 'product_name', 'product_price', 'product_image']
+        # 完美融合：保留了你的 is_selected，并使用了更优雅的 product 嵌套结构
+        fields = ['id', 'product', 'product_id', 'nums', 'is_selected']
+
+
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderInfo
