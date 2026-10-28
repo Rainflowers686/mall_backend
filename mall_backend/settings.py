@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'goods',
     'django_filters',
     'users',  # 新增：告诉 Django 我们的用户中心诞生了
+    'trade',  # 新增：告诉 Django 我们的交易模块诞生了
 ]
 
 MIDDLEWARE = [
