@@ -1,6 +1,7 @@
 # Geek Mall Backend
 
 *A focused Django REST API for a university mall coursework build.*
+
 ![Python](https://img.shields.io/badge/Python-API-3776AB?logo=python&logoColor=white) ![Django REST Framework](https://img.shields.io/badge/Django-REST%20Framework-092E20?logo=django&logoColor=white) ![Status](https://img.shields.io/badge/Status-Course%20Project-586069)
 
 **Guide:** [Status](#project-status) · [Run locally](#run-locally) · [Repository contents](#repository-contents)
